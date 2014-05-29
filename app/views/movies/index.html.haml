@@ -4,9 +4,13 @@
 %table#movies
   %thead
     %tr
-      %th= link_to#title_header 'Movie Title', index_path(:sort => 'title')
+      %th{ :class => (flash[:hilite] == 'title' ? 'hilite' : nil) } 
+        %a{ :href => movies_path(:sort => 'title'), :id => 'title_header'} 
+          Movie Title
       %th Rating
-      %th Release Date
+      %th{ :class => (flash[:hilite] == 'release_date' ? 'hilite' : nil) }
+        %a{ :href => movies_path(:sort => 'release_date') , :id => 'release_date_header'} 
+          Release Date
       %th More Info
   %tbody
     - @movies.each do |movie|
